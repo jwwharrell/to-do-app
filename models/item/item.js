@@ -1,4 +1,4 @@
-const mongoose = require('./connection.js')
+const mongoose = require('../connection.js')
 
 const ItemModelSchema = new mongoose.Schema({
   name: String,
