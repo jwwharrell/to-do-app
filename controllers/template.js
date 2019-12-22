@@ -15,7 +15,7 @@ const express = require('express')
  * controller you need.
  * 
  */
-const templateApi = require('../models/template.js')
+const templateApi = require('../models/toDoItem/item.js/index.js')
 
 /* Step 3 
  * 
