@@ -4,9 +4,12 @@
   "description": "# Setup",
   "main": "server.js",
   "dependencies": {
+    "bootstrap": "^4.4.1",
     "concurrently": "^4.1.1",
     "express": "^4.17.1",
-    "mongoose": "^5.6.1"
+    "jquery": "^3.4.1",
+    "mongoose": "^5.6.1",
+    "popper.js": "^1.16.0"
   },
   "engines": {
     "node": "10.x"
