@@ -13,23 +13,34 @@ export default class EveryItem extends Component {
     refreshItem = () => {
         axios.get('api/item')
             .then((res) => {
-                this.setState({itemList: res.data})
+                this.setState({ itemList: res.data })
             })
     }
 
     render() {
         return (
             <div>
-                <h1>Hello Item</h1>
-                <ol>
-                {this.state.itemList.map((item) => {
-                    return (
-                        <li>
-                            {item.name}
-                        </li>
-                    )
-                })}
-                </ol>
+                <h1>To Do</h1>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="list-group" id="list-tab" role="tablist">
+                            {this.state.itemList.map((item) => {
+                                return (
+                                    <a class="list-group-item list-group-item-action" data-toggle="list" role="tab">{item.name}</a>
+                                )
+                            })}
+                        </div>
+                    </div>
+                    <div class="col-8">
+                        <div class="tab-content" id="nav-tabContent">
+                            {this.state.itemList.map((item) => {
+                                return (
+                                    <div class="tab-pane fade show active"  role="tabpanel">{item.description}</div>
+                                )
+                            })}
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }
