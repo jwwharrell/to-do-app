@@ -21,21 +21,23 @@ export default class EveryItem extends Component {
         return (
             <div>
                 <h1>To Do</h1>
-                <div class="row">
-                    <div class="col-4">
-                        <div class="list-group" id="list-tab" role="tablist">
+                <div className="row">
+                    <div className="col-4">
+                        <div className="list-group" id="list-tab" role="tablist">
                             {this.state.itemList.map((item) => {
+                                const refLink = `#list-${item._id}`
                                 return (
-                                    <a class="list-group-item list-group-item-action" data-toggle="list" role="tab">{item.name}</a>
+                                    <a key={item._id} className="list-group-item list-group-item-action" href={refLink} data-toggle="list" role="tab">{item.name}</a>
                                 )
                             })}
                         </div>
                     </div>
-                    <div class="col-8">
-                        <div class="tab-content" id="nav-tabContent">
+                    <div className="col-8">
+                        <div className="tab-content" id="nav-tabContent">
                             {this.state.itemList.map((item) => {
+                                const refLink = `#list-${item._id}`
                                 return (
-                                    <div class="tab-pane fade show active"  role="tabpanel">{item.description}</div>
+                                    <div key={item._id} id={refLink} className="tab-pane fade show active"  role="tabpanel">{item.description}</div>
                                 )
                             })}
                         </div>
