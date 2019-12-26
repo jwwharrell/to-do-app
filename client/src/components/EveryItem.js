@@ -4,6 +4,7 @@ import axios from 'axios'
 export default class EveryItem extends Component {
     state = {
         itemList: [],
+        activeDescription: null
     }
 
     componentDidMount() {
@@ -17,7 +18,16 @@ export default class EveryItem extends Component {
             })
     }
 
+    onTaskSelection = (e) => {
+        const itemId = e.target.id
+        axios.get(`api/item/${itemId}`)
+            .then((res) => {
+                this.setState({ activeDescription: res.data.description })
+            })
+    }
+
     render() {
+        let description = this.state.activeDescription
         return (
             <div>
                 <h1>To Do</h1>
@@ -27,19 +37,14 @@ export default class EveryItem extends Component {
                             {this.state.itemList.map((item) => {
                                 const refLink = `#list-${item._id}`
                                 return (
-                                    <a key={item._id} className="list-group-item list-group-item-action" href={refLink} data-toggle="list" role="tab">{item.name}</a>
+                                    <a key={item._id} id={item._id} onClick={this.onTaskSelection} className="list-group-item list-group-item-action" href={refLink} data-toggle="list" role="tab">{item.name}</a>
                                 )
                             })}
                         </div>
                     </div>
                     <div className="col-8">
                         <div className="tab-content" id="nav-tabContent">
-                            {this.state.itemList.map((item) => {
-                                const refLink = `#list-${item._id}`
-                                return (
-                                    <div key={item._id} id={refLink} className="tab-pane fade show active"  role="tabpanel">{item.description}</div>
-                                )
-                            })}
+                            {description ? <div className="tab-pane fade show active"  role="tabpanel">{description}</div> : null}
                         </div>
                     </div>
                 </div>
