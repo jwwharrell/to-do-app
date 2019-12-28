@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import CreateItem from './CreateItem.js'
 
 export default class EveryItem extends Component {
     state = {
@@ -48,6 +49,8 @@ export default class EveryItem extends Component {
                         </div>
                     </div>
                 </div>
+                <br/>
+                <CreateItem />
             </div>
         )
     }
