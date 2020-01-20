@@ -20,6 +20,7 @@ export default class CreateItem extends Component {
         }
         axios.post('api/item', newTask)
         this.handleHide()
+        this.props.refresh()
     }
 
     handleShow = () => {

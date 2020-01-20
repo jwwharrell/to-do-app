@@ -50,7 +50,7 @@ export default class EveryItem extends Component {
                     </div>
                 </div>
                 <br/>
-                <CreateItem />
+                <CreateItem refresh={this.refreshItem}/>
             </div>
         )
     }
