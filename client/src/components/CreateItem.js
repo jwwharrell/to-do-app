@@ -4,9 +4,22 @@ import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 
 export default class CreateItem extends Component {
+    
+    state = {
+        show: false,
+    }
 
-    onAddNewTaskClick = (e) => {
-        console.log(e.target)
+
+    handleShow = () => {
+        const previousState = { ...this.state }
+        previousState.show = true
+        this.setState(previousState)
+    }
+
+    handleHide = () => {
+        const previousState = { ...this.state }
+        previousState.show = false
+        this.setState(previousState)
     }
 
     render() {
@@ -17,13 +30,13 @@ export default class CreateItem extends Component {
                     className="btn btn-primary"
                     data-toggle="modal"
                     data-target="add-modal"
-                    onClick={this.onAddNewTaskClick}
+                    onClick={this.handleShow}
                 >
                     Add New Task
                 </button>
-                <Modal.Dialog>
+                <Modal show={this.state.show} onHide={this.handleHide}>
                     <Modal.Header closeButton>
-                        <Modal.Title>Modal title</Modal.Title>
+                        <Modal.Title>Add Task</Modal.Title>
                     </Modal.Header>
 
                     <Modal.Body>
@@ -31,10 +44,10 @@ export default class CreateItem extends Component {
                     </Modal.Body>
 
                     <Modal.Footer>
-                        <Button variant="secondary">Close</Button>
-                        <Button variant="primary">Save changes</Button>
+                        <Button variant="secondary" onClick={this.handleHide}>Close</Button>
+                        <Button variant="primary" onClick={this.handleHide}>Save changes</Button>
                     </Modal.Footer>
-                </Modal.Dialog>
+                </Modal>
             </div>
         )
     }
