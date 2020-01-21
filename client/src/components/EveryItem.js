@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import CreateItem from './CreateItem.js'
+import ButtonToolbar from 'react-bootstrap/ButtonToolbar'
+import Button from 'react-bootstrap/Button'
 
 export default class EveryItem extends Component {
     state = {
@@ -38,19 +40,30 @@ export default class EveryItem extends Component {
                             {this.state.itemList.map((item) => {
                                 const refLink = `#list-${item._id}`
                                 return (
-                                    <a key={item._id} id={item._id} onClick={this.onTaskSelection} className="list-group-item list-group-item-action" href={refLink} data-toggle="list" role="tab">{item.name}</a>
+                                    <a key={item._id} id={item._id} onClick={this.onTaskSelection} className="list-group-item list-group-item-action" href={refLink} data-toggle="list" role="tab">
+                                        {item.name}
+                                    </a>
+
                                 )
                             })}
                         </div>
                     </div>
                     <div className="col-8">
                         <div className="tab-content" id="nav-tabContent">
-                            {description ? <div className="tab-pane fade show active"  role="tabpanel">{description}</div> : null}
+                            {description ?
+                                <div className="tab-pane fade show active" role="tabpanel">
+                                    <ButtonToolbar>
+                                        <Button variant="outline-success" size='sm' >Finished!</Button>
+                                        <Button variant="outline-warning" size='sm' >Remove</Button>
+                                    </ButtonToolbar>
+                                    {description}
+                                </div>
+                                : null}
                         </div>
                     </div>
                 </div>
-                <br/>
-                <CreateItem refresh={this.refreshItem}/>
+                <br />
+                <CreateItem refresh={this.refreshItem} />
             </div>
         )
     }
