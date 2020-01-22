@@ -2,7 +2,8 @@ const mongoose = require('../connection.js')
 
 const ItemModelSchema = new mongoose.Schema({
   name: String,
-  description: String
+  description: String,
+  finished: {type: Boolean, default: false}
 })
 
 const ItemCollection = mongoose.model('Item', ItemModelSchema)
