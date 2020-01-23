@@ -47,6 +47,15 @@ export default class EveryItem extends Component {
             .then(() => {
                 this.refreshItem()
             })
+        const emptyItem = {
+            name: '',
+            description: '',
+            finished: ''
+        }
+        const previousState = { ...this.state }
+        previousState.currentItem = emptyItem
+        this.setState(previousState)
+
     }
 
     render() {
