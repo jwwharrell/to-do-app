@@ -26,7 +26,7 @@ const updateCurrentItem = (itemId, updatedItem) => {
 } 
 
 const deleteCurrentItem = (itemId) => {
-  return ItemCollection.deleteOne({ _id: invoiceId })
+  return ItemCollection.deleteOne({ _id: itemId })
 }
 
 module.exports = {

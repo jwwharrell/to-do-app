@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import CreateItem from './CreateItem.js'
-import ButtonToolbar from 'react-bootstrap/ButtonToolbar'
 import Button from 'react-bootstrap/Button'
-import Fade from 'react-bootstrap/Fade'
 
 export default class EveryItem extends Component {
     state = {
@@ -43,6 +41,13 @@ export default class EveryItem extends Component {
         axios.put(`/api/item/${itemId}`, this.state.currentItem)
     }
 
+    onRemoveClick = () => {
+        let id = this.state.currentItem._id
+        axios.delete(`/api/item/${id}`)
+            .then(() => {
+                this.refreshItem()
+            })
+    }
 
     render() {
         let description = this.state.currentItem.description
@@ -74,7 +79,7 @@ export default class EveryItem extends Component {
                                         {description}
                                         <br />
                                         <br />
-                                        <Button variant="outline-danger" size='sm'>Remove</Button>
+                                        <Button variant="outline-danger" size='sm' onClick={this.onRemoveClick}>Remove</Button>
                                 </div>
                                 : null}
                         </div>
