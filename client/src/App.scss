@@ -1,0 +1,25 @@
+$primary: #86B387;
+$secondary: #FFD9EA;
+$success: #D9FFDA;
+$info: #F2FFF3;
+$warning: #364037;
+$danger: #B37490;
+
+
+@import '~bootstrap/scss/bootstrap';
+
+* {
+    font-weight: 100 !important;
+
+}
+
+body {
+    background-color: #F2F2F2;
+}
+
+h1 {
+    color: #364037;
+    text-align: center;
+    margin: 30px 0
+}
+

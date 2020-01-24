@@ -3,6 +3,9 @@ import axios from 'axios'
 import CreateItem from './CreateItem.js'
 import EmptyState from './EmptyState'
 import Button from 'react-bootstrap/Button'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 export default class EveryItem extends Component {
     state = {
@@ -65,10 +68,10 @@ export default class EveryItem extends Component {
         let description = this.state.currentItem.description
         let finished = this.state.currentItem.finished
         return (
-            <div>
-                <h1>To Do</h1>
-                <div className="row">
-                    <div className="col-4">
+            <Container>
+                <h1>ToDo</h1>
+                <Row>
+                    <Col>
                         <div className="list-group" id="list-tab" role="tablist">
                             {this.state.itemList.map((item) => {
                                 const refLink = `#list-${item._id}`
@@ -79,12 +82,12 @@ export default class EveryItem extends Component {
                                 )
                             })}
                         </div>
-                    </div>
-                    <div className="col-8">
+                    </Col>
+                    <Col>
                         <div className="tab-content" id="nav-tabContent">
                             {description ?
                                 <div className="tab-pane fade show active" role="tabpanel">
-                                    <Button variant={finished ? "outline-dark" : "outline-success"} size='sm' onClick={this.onFinishedClick} >{finished ? "Make Active Again" : "Mark As Done"}</Button>
+                                    <Button variant={finished ? "outline-dark" : "outline-primary"} size='sm' onClick={this.onFinishedClick} >{finished ? "Make Active Again" : "Mark As Done"}</Button>
                                     <br />
                                     <br />
                                     {description}
@@ -96,11 +99,11 @@ export default class EveryItem extends Component {
                         </div>
                         <br />
                         <CreateItem refresh={this.refreshItem} />
-                    </div>
+                    </Col>
 
-                </div>
+                </Row>
 
-            </div>
+            </Container>
         )
     }
 }

@@ -4,12 +4,9 @@ export default class EmptyState extends Component {
     render() {
         return (
             <div>
-                <h2>Do Something!</h2>
+                <p>Click on an item to the left.</p>
                 <br />
-                <br />
-                <h5>Click on an item to the left.</h5>
-                <br />
-                <h5>Or click the button below to add a new item.</h5>
+                <p>Or click the button below to add a new item.</p>
                 <br />
             </div>
         )
