@@ -14,6 +14,7 @@
 <li>Mongoose</li>
 <li>Express.js</li>
 <li>Sass</li>
+<li>Bootstrap</li>
 <li>React.js</li>
 <li>Node.js</li>
 <li>GitHub</li>
